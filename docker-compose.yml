@@ -1,0 +1,17 @@
+version: '3'
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
+
+services:
+  general_cron:
+    image: mcuadros/ofelia:latest
+    container_name: general_cron
+    restart: always
+    volumes:
+      - ${PWD}:/etc/ofelia
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/ssl/certs:/etc/ssl/certs
+
